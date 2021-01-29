@@ -1,0 +1,31 @@
+//order static tree
+Node root
+
+class Node {
+    int key
+    int size
+    Node left
+    Node right
+    Node parent
+    Color color;
+}
+
+OS_SELECT(x, i) {
+    rank = x.left.size + 1
+    if i == rank
+        return x
+    else if i < rank
+        return OS_SELECT(x.left, i)
+    else
+        return OS_SELECT(X.right, i)
+}
+
+OS_RANK(T, x) {
+    rank = x.left.size + 1
+    y = x
+    while y != T.root
+        if y = y.parent.right
+            rank += y.parent.left.size + 1
+        y = y.parent
+    return rank
+}

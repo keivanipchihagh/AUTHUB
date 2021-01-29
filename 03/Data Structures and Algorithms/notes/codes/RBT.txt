@@ -1,0 +1,162 @@
+//red black trees
+Node root
+
+class Node {
+    int data
+    Node left
+    Node right
+    Node parent
+    Color color;
+}
+
+LEFT_ROTATE(T, x) {
+    y = x.right
+    x.right = y.left
+    if y.left != NULL
+        y.left.parent = x
+    y.parent = x.parent
+    if x.parent == NULL //x is root
+        T.root = y
+    else if x == x.parent.left // x is left child
+        x.parent.left = y
+    else // x is right child
+        x.parent.right = y
+    y.left = x
+    x.parent = y
+}
+
+RIGHT_ROTATE(T, x) {
+    y = x.left
+    x.left = y.right
+    if y.right != NULL
+        y.right.parent = x
+    y.parent = x.parent
+    if x.parent == NULL //x is root
+        T.root = y
+    else if x == x.parent.left // x is left child
+        x.parent.left = y
+    else // x is right child
+        x.parent.right = y
+    y.right = x
+    x.parent = y
+}
+
+INSERT(T, n) {
+    y = T.NIL       //Here, we have used T.NIL instead of NULL unlike we do with 
+                    //normal binary search tree. Also, those T.NIL are the leaves 
+                    //and they all are black, so there won't be a violation of property 3.
+    temp = T.root
+
+    while temp != T.NIL
+        y = temp
+        if n.data < temp.data
+            temp = temp.left
+        else
+            temp = temp.right
+    n.parent = y
+    if y==T.NIL //empty tree
+        T.root = n
+    else if n.data < y.data
+        y.left = n
+    else
+        y.right = n
+
+    n.left = T.NIL
+    n.right = T.NIL
+    n.color = RED
+    INSERT_FIXUP(T, n)
+}
+
+INSERT_FIXUP(T, z) {
+    while z.parent.color == red {
+
+        if z.parent == z.parent.parent.left { //z.parent is left child
+            y = z.parent.parent.right //uncle of z
+
+            if y.color == red //case 1
+                z.parent.color = black
+                y.color = black
+                z.parent.parent.color = red
+                z = z.parent.parent
+
+            else //case 2 or 3
+                if z == z.parent.right //case 2
+                    z = z.parent //marked z.parent as new z
+                    LEFT_ROTATE(T, z) //rotated parent of orignal z
+
+                //case 3
+                z.parent.color = black // made parent black
+                z.parent.parent.color = red // made grandparent red
+                RIGHT_ROTATE(T, z.parent.parent) // right rotation on grandparent
+        } else { // z.parent is right child
+            code will be symmetric
+        }
+    }
+    T.root.color = black
+}
+
+RB_TRANSPLANT(T, u, v) {
+    if u.parent == T.NIL // u is root
+        T.root = v
+    elseif u == u.parent.left //u is left child
+        u.parent.left = v
+    else // u is right child
+        u.parent.right = v
+    v.parent = u.parent
+}
+
+RB_DELETE(T, z) {
+    y = z
+    y_orignal_color = y.color
+    if z.left == T.NIL //no children or only right
+        x = z.right
+        RB_TRANSPLAN(T, z, z.right)
+    else if z.right == T.NIL // only left child
+        x = z.left
+        RB_TRANSPLAN(T, z, z.left)
+    else // both children
+        y = MINIMUM(z.right)
+        y_orignal_color = y.color
+        x = y.right
+        if y.parent == z // y is direct child of z
+            x.parent = y
+        else
+            RB_TRANSPLAN(T, y, y.right)
+            y.right = z.right
+            y.right.parent = y
+        RB_TRANSPLAN(T, z, y)
+        y.left = z.left
+        y.left.parent = y
+        y.color = z.color
+    if y_orignal_color == black
+        RB_DELETE_FIXUP(T, x)
+}
+
+RB_DELETE_FIXUP(T, x) {
+    while x!= T.root and x.color == black
+        if x == x.parent.left
+            w = x.parent.right
+            if w.color == red //case 1
+                w.color = black
+                x.parent.color = red
+                LEFT-ROTATE(T, x.parent)
+                w = x.parent.right
+            if w.left.color == black and w.right.color == black //case 2
+                w.color = red
+                x = x.parent
+            else //case 3 or 4
+                if w.right.color == black //case 3
+                    w.left.color = black
+                    w.color = red
+                    RIGHT-ROTATE(T, w)
+                    w = x.parent.right
+                //case 4
+                w.color = x.parent.color
+                x.parent.color = black
+                w.right.color = black
+                LEFT-ROTATE(T, x.parent)
+                x = T.root
+        else
+            code will be symmetric
+    x.color = black
+}

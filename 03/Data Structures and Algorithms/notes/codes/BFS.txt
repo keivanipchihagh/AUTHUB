@@ -1,0 +1,20 @@
+BFS(G, u) {
+    Queue queue
+    q.enQueue(u)
+    visited[u] = true
+    while !Q.isEmpty()
+        v = queue.deQueue()
+        foreach w in Adj[v]
+            if !visited[w]
+                visited[w] = true
+                queue.enQueue(w)
+}
+//O(|V|+|E|)
+
+//Directed graph
+Breadth_First_search(G, u) {
+    BFS(G, u)
+    for i = 1 to |V|
+        if !visited[i]
+         BFS(G, i)
+}

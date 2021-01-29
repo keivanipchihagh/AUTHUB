@@ -1,0 +1,46 @@
+Merg_Sort(A, p, r) {
+    if p < r
+        q = floor((p + r)/2)
+        Merg_Sort(A, p, q)
+        Merg_Sort(A, q+1, r)
+
+        Merg(A, p, q r)
+}
+//O(nlogn)
+
+Merg(A, p, q, r) {
+    n1 = q - p + 1
+    n2 = r - p
+    for i = 1 to n1
+        L[i] = A[p + i - 1]
+    for i = 1 to n2
+        R[i] = A[q + i]
+
+    L[n1 + 1] = unlimited
+    R[n2 + 1] = unlimited
+    i = 1
+    j = 1
+
+    for k = p to rank
+        if L[i] < R[i]
+            A[k] = L[i]
+            i++
+        else
+            A[k] = R[j]
+            j++
+}
+//O(n)
+
+maximum(A, p, r) {
+    if p == r
+        return A[p]
+
+    q = floor((p + r)/2)
+    m1 = maximum(A, p, q)
+    m2 = maximum(A, q+1, r)
+    if m1>m2
+        return m1
+    else 
+        return m2
+}
+//O(1)

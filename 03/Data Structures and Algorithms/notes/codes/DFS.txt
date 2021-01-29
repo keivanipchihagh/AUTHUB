@@ -1,0 +1,29 @@
+//Adjacency list
+DFS(G, u) {
+    visited[u] = true
+    foreach (w in Adj[u]) {
+        if !visited[w]
+            DFS(G, w)
+    }
+}
+//O(|V|+|E|)
+
+//Adjacency matrix
+DFS(G, u) {
+    visited[u] = true
+    for i = 1 to |V| {
+        if A[u][i] == 1 && !visited[i]
+            DFS(G, w)
+    }
+}
+//O(|V|^2)
+
+//Directed graph
+Depth_First_Search(G, u) {
+    visited[u] = true
+    for i = 1 to |V| {
+        if !visited[i]
+            DFS(G, w)
+    }
+}
+//O(|V|+|E|)

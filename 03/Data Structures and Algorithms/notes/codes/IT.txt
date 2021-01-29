@@ -1,0 +1,21 @@
+//Interval tree
+Node root
+
+class Node {
+    Int int
+    size
+    Node left
+    Node right
+    Node parent
+    Color color;
+}
+
+INTERVAL_SEARCH(T, i) {
+    x = t.root
+    while x != NULL && !overlap(x.int , i)
+        if x.left != NULL && x.left.max >= i.low
+            x = x.left
+        else 
+            x = x.right
+    return x
+}
