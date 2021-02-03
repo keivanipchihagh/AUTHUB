@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "E:/ISE/Projects/LC_Lab_9/D_FlipFlop.xst" -ofn "E:/ISE/Projects/LC_Lab_9/D_FlipFlop.syr" 

@@ -1,0 +1,4 @@
+verilog work "D_FlipFlop.v"
+verilog work "Circuit.v"
+verilog work "tb_Circuit.v"
+verilog work "E:/ISE/14.7/ISE_DS/ISE//verilog/src/glbl.v"

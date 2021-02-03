@@ -1,0 +1,5 @@
+verilog isim_temp "HA.v"
+verilog isim_temp "FA.v"
+verilog isim_temp "Adder_Subtractor.v"
+verilog isim_temp "tb_Adder_Subtractor.v"
+verilog isim_temp "E:/ISE/14.7/ISE_DS/ISE//verilog/src/glbl.v"

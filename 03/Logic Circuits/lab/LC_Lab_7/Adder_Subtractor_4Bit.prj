@@ -1,0 +1,4 @@
+verilog work "HA.v"
+verilog work "FA.v"
+verilog work "Adder_Subtractor.v"
+verilog work "Adder_Subtractor_4Bit.v"

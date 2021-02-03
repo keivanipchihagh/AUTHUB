@@ -1,0 +1,4 @@
+verilog isim_temp "D_FlipFlop.v"
+verilog isim_temp "Circuit.v"
+verilog isim_temp "tb_Circuit.v"
+verilog isim_temp "E:/ISE/14.7/ISE_DS/ISE//verilog/src/glbl.v"

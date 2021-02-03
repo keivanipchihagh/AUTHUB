@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "E:/ISE/Projects/LC_Lab_7/tb_Adder_Subtractor_isim_beh.exe" -prj "E:/ISE/Projects/LC_Lab_7/tb_Adder_Subtractor_beh.prj" "work.tb_Adder_Subtractor" "work.glbl" 
